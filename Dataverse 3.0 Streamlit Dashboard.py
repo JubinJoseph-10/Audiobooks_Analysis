@@ -11,10 +11,12 @@ from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report,confusion_matrix
 import plotly.graph_objects as go
+from PIL import Image
 
 
+ico = Image.open("Data/Audible.png")
 #Setting page configs
-st.set_page_config(layout='wide',initial_sidebar_state='collapsed')
+st.set_page_config(layout='wide',initial_sidebar_state='collapsed',page_icon=ico)
 
 #Setting the title
 st.title('Audiobooks User Analyis')
