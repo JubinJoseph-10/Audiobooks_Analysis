@@ -382,7 +382,7 @@ corr_data_engagement_des_.write('\n')
 
 #creating the datset that would be displayed
 dem_subs = req_data.groupby([subs_var,'Subscription_Type'])['Ref ID'].count()
-dem_subs=pd.DataFrame(g_pref)
+dem_subs=pd.DataFrame(dem_subs)
 dem_subs.reset_index(inplace=True)
 dem_subs.rename(columns={'Ref ID':'Number of Users'},inplace=True)
 
