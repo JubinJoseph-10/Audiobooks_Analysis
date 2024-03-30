@@ -44,6 +44,7 @@ demo_Var_ = demo_listening_habs_des_.selectbox('Select a Demographic Variable to
 eval_Var_ = demo_listening_habs_des_.selectbox('Select a Variable to Study Habbits!',['No_of_Books_read_in_a_year_Number','Event_Duration_Minutes_2_Weeks','Event_Duration_Minutes_5_Weeks',
                                                 'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration',
                                                 'Engagement_Rate'])
+demo_listening_habs_des_.write('\n')
 
 #creating the datset that would be displayed
 demo_eval = req_data.groupby([demo_Var_])[eval_Var_].mean().round(2)
@@ -65,14 +66,16 @@ demo_listening_pref_chart_space_ = demo_listening_pref_chart_space.container(bor
 
 
 demo_listening_pref_des_.markdown('<div style="text-align: justify; font-size: 18px">User Preferences</div>',unsafe_allow_html=True)
-demo_listening_pref_des_.markdown('<div style="text-align: justify; font-size: 18px"></div>',unsafe_allow_html=True)
-
+demo_listening_pref_des_.write('\n')
+demo_listening_pref_des_.markdown('<div style="text-align: justify; font-size: 14px">By analyzing these factors, we can gain insights into the diverse needs and behaviors of audiobook consumers across different segments. This section sets the stage for exploring the nuanced relationship between demographics and audiobook consumption patterns.</div>',unsafe_allow_html=True)
+demo_listening_pref_des_.write('\n')
 
 
 #select boxes for the variables that would be a part of the chart
 demo_Var_pref = demo_listening_pref_des_.selectbox('Select a Demographic Variable to Study!',['Age_Group','City','Gender','Commuting_Mode'])
 pref_Var_ = demo_listening_pref_des_.selectbox('Select a Variable to Study Preferences!',['Download_vs_Streaming','Language_Preference','Listening_Device_Preference',
                                                 'Listening_Context','Preferred_Listening_Time','Subscription_Type','Average_Listening_Speed'])                                       
+demo_listening_pref_des_.write('\n')
 
 #creating the datset that would be displayed
 pref_eval = req_data.groupby([demo_Var_pref,pref_Var_])['Ref ID'].count()
