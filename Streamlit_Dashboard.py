@@ -376,7 +376,7 @@ corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True)
 
 
 #select boxes for the variables that would be a part of the chart
-subs_var = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=32)                                       
+subs_var = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=512)                                       
 
 corr_data_engagement_des_.write('\n')
 
