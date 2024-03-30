@@ -337,7 +337,7 @@ top_g_analysis_pref.write('\n')
 #########################################################################################################################################################################################################################################################################################################################################################
 #########################################################################################################################################################################################################################################################################################################################################################
 corr_data_engagement_ = st.container(border=True)
-corr_data_engagement_.markdown('<div style="text-align: center; font-size: 24px">Correlation between type of Subscription and User Enagagement and Retention</div>',unsafe_allow_html=True)
+_.markdown('<div style="text-align: center; font-size: 24px">Correlation between type of Subscription and User Enagagement and Retention</div>',unsafe_allow_html=True)
 corr_data_engagement_.write('\n')
 
 corr_data_engagement=pd.DataFrame()
@@ -369,7 +369,7 @@ user_ret_engage_analysis.write('\n')
 #user_ret_engage_analysis.write('\n')
 
 
-corr_data_engagement_des,corr_data_engagement_chart = corr_data_engagement.columns([.3,.7])
+corr_data_engagement_des,corr_data_engagement_chart = corr_data_engagement_ .columns([.3,.7])
 corr_data_engagement_des_ = corr_data_engagement_des.container(border=True)
 corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True) 
 
