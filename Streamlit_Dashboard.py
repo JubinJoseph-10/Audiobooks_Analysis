@@ -136,11 +136,18 @@ dev_pref_habbits_des , dev_pref_chart_space = dev_pref_habbits.columns([.3,.7])
 dev_pref_habbits_des_ = dev_pref_habbits_des.container(border =True)
 dev_pref_chart_space_ = dev_pref_chart_space.container(border =True)
 
+dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 18px">Implication of users preferences on content delivery startegies</div>',unsafe_allow_html=True)
+dev_pref_habbits_des_.write('\n')
+dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 14px">Furthermore, exploring user preferences for downloading versus streaming unveils implications for content delivery strategies, informing decision-making processes for audiobook platforms. Funneling our strategies and collaborations further into fine tuning the user experience that we provide to the customers.</div>',unsafe_allow_html=True)
+dev_pref_habbits_des_.write('\n')
+
 
 #select boxes for the variables that would be a part of the chart
 tech_var_pref = dev_pref_habbits_des_.selectbox('Select a Technology Related Variable to Study!',['Smart_Phone','Tablet','Device_Type','Listening_Device_Preference'])
 tech_pref_Var_ = dev_pref_habbits_des_.selectbox('Select a Variable to Study Usage!',['No_of_Books_read_in_a_year_Number','Event_Duration_Minutes_2_Weeks','Event_Duration_Minutes_5_Weeks',
                                                 'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration','Engagement_Rate'])
+
+dev_pref_habbits_des_.write('\n')
 
 #creating the datset that would be displayed
 tech_eval = req_data.groupby([tech_var_pref])[tech_pref_Var_].mean().round(2)
@@ -153,12 +160,19 @@ dev_pref_chart_space_.plotly_chart(tech_usage_chart)
 
 
 
-
 ###### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
 dev_pref_chart_,dev_pref_des = dev_pref_habbits.columns([.7,.3])
 dev_pref_des_ = dev_pref_des.container(border =True)
 dev_pref_chart_ = dev_pref_chart_.container(border =True)
+
+
+dev_pref_des_.markdown('<div style="text-align: justify; font-size: 18px">Choice of Technology and Audiobook Usage!</div>',unsafe_allow_html=True)
+dev_pref_des_.write('\n')
+dev_pref_des_.markdown('<div style="text-align: justify; font-size: 14px">This section delves into the impact of technology choices on audiobook usage and content delivery strategies to shed light on evolving consumer preferences and market dynamics. By examining factors such as the choice between Android and iOS devices, as well as preferences for smartphone versus tablet usage, we gain insights on how these decisions influence audiobook consumption habits.</div>',unsafe_allow_html=True)
+dev_pref_des_.write('\n')
+
+
 
 
 #select boxes for the variables that would be a part of the chart
