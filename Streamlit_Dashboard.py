@@ -195,6 +195,16 @@ tech_pref_chart = px.bar(tech_pre_val,color=tech_pref_Var,x=tech_var_pref,barmod
 dev_pref_chart_.plotly_chart(tech_pref_chart)
 
 
+##### key takeaways from the analysis on user preferences and habits given demographics
+tech_pref_analysis = dev_pref_habbits.container(border=True) 
+tech_pref_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for Device and Technology Usage and its Implications!</div>',unsafe_allow_html=True)
+tech_pref_analysis.write('\n')
+tech_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. The data indicates smartphones are the most preferred device type for audible listeners with a majority leaning towards android over IOS. However, the most consistent use of the platform is made by IOS users, who also have a higher engagement rate.</div>',unsafe_allow_html=True)
+tech_pref_analysis.write('\n')
+tech_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">2. Smartphones, as the preferred device type for audiobooks, was further substantiated by a Market Research report by Polaris which stated audiobook markets will witness rapid expansion over, primarily attributed to its role in democratizing audiobook accessibility.</div>',unsafe_allow_html=True)
+tech_pref_analysis.write('\n')
+tech_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">3. There were only minute differences for a preference for downloading or streaming across different demographics, such as age, city, gender and type of commuting. However, when it came to the preferred device and choice between downloading or streaming content, we see that users that prefer PCs and Smart Speakers tend to stream content more as opposed to users that prefer, phones and tablets who usually download content more.</div>',unsafe_allow_html=True)
+tech_pref_analysis.write('\n')
 
 
 ###### Top Genres
