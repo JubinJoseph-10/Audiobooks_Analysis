@@ -376,19 +376,19 @@ corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True)
 
 
 #select boxes for the variables that would be a part of the chart
-subs_var = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=512)                                       
+subs_var__ = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=512)                                       
 
 corr_data_engagement_des_.write('\n')
 
 #creating the datset that would be displayed
-dem_subs = req_data.groupby([subs_var,'Subscription_Type'])['Ref ID'].count()
+dem_subs = req_data.groupby([subs_var__,'Subscription_Type'])['Ref ID'].count()
 dem_subs=pd.DataFrame(dem_subs)
 dem_subs.reset_index(inplace=True)
 dem_subs.rename(columns={'Ref ID':'Number of Users'},inplace=True)
 
 st.dataframe(dem_subs)
 
-dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x=sub_var,barmode='group',
+dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x=subs_var__,barmode='group',
                         y='Number of Users',title=f'Preference Trends about Subscription Type over {subs_var}')
 
 corr_data_engagement_chart_.plotly_chart(dem_subs_chart)
