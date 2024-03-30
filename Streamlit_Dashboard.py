@@ -136,10 +136,12 @@ dev_pref_habbits_des , dev_pref_chart_space = dev_pref_habbits.columns([.3,.7])
 dev_pref_habbits_des_ = dev_pref_habbits_des.container(border =True)
 dev_pref_chart_space_ = dev_pref_chart_space.container(border =True)
 
-dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 18px">Implication of users preferences on content delivery startegies</div>',unsafe_allow_html=True)
+
+dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 18px">Choice of Technology and Audiobook Usage!</div>',unsafe_allow_html=True)
 dev_pref_habbits_des_.write('\n')
-dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 14px">Furthermore, exploring user preferences for downloading versus streaming unveils implications for content delivery strategies, informing decision-making processes for audiobook platforms. Funneling our strategies and collaborations further into fine tuning the user experience that we provide to the customers.</div>',unsafe_allow_html=True)
+dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 14px">This section delves into the impact of technology choices on audiobook usage and content delivery strategies to shed light on evolving consumer preferences and market dynamics. By examining factors such as the choice between Android and iOS devices, as well as preferences for smartphone versus tablet usage, we gain insights on how these decisions influence audiobook consumption habits.</div>',unsafe_allow_html=True)
 dev_pref_habbits_des_.write('\n')
+
 
 
 #select boxes for the variables that would be a part of the chart
@@ -167,9 +169,9 @@ dev_pref_des_ = dev_pref_des.container(border =True)
 dev_pref_chart_ = dev_pref_chart_.container(border =True)
 
 
-dev_pref_des_.markdown('<div style="text-align: justify; font-size: 18px">Choice of Technology and Audiobook Usage!</div>',unsafe_allow_html=True)
+dev_pref_des_.markdown('<div style="text-align: justify; font-size: 18px">Implication of users preferences on content delivery startegies</div>',unsafe_allow_html=True)
 dev_pref_des_.write('\n')
-dev_pref_des_.markdown('<div style="text-align: justify; font-size: 14px">This section delves into the impact of technology choices on audiobook usage and content delivery strategies to shed light on evolving consumer preferences and market dynamics. By examining factors such as the choice between Android and iOS devices, as well as preferences for smartphone versus tablet usage, we gain insights on how these decisions influence audiobook consumption habits.</div>',unsafe_allow_html=True)
+dev_pref_des_.markdown('<div style="text-align: justify; font-size: 14px">Furthermore, exploring user preferences for downloading versus streaming unveils implications for content delivery strategies, informing decision-making processes for audiobook platforms. Funneling our strategies and collaborations further into fine tuning the user experience that we provide to the customers.</div>',unsafe_allow_html=True)
 dev_pref_des_.write('\n')
 
 
@@ -180,6 +182,7 @@ tech_var_pref = dev_pref_des_.selectbox('Select a Technology Related Variable to
 tech_pref_Var = dev_pref_des_.selectbox('Select a Variable to Study Usage!',['Download_vs_Streaming','Language_Preference','Listening_Device_Preference',
                                                 'Listening_Context','Preferred_Listening_Time','Subscription_Type','Average_Listening_Speed'],key=8)                                       
 
+dev_pref_des_.write('\n')
 
 #creating the datset that would be displayed
 tech_pre_val = req_data.groupby([tech_var_pref,tech_pref_Var])['Ref ID'].count()
