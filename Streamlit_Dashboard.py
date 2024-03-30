@@ -142,8 +142,6 @@ dev_pref_habbits_des_.write('\n')
 dev_pref_habbits_des_.markdown('<div style="text-align: justify; font-size: 14px">This section delves into the impact of technology choices on audiobook usage and content delivery strategies to shed light on evolving consumer preferences and market dynamics. By examining factors such as the choice between Android and iOS devices, as well as preferences for smartphone versus tablet usage, we gain insights on how these decisions influence audiobook consumption habits.</div>',unsafe_allow_html=True)
 dev_pref_habbits_des_.write('\n')
 
-
-
 #select boxes for the variables that would be a part of the chart
 tech_var_pref = dev_pref_habbits_des_.selectbox('Select a Technology Related Variable to Study!',['Smart_Phone','Tablet','Device_Type','Listening_Device_Preference'])
 tech_pref_Var_ = dev_pref_habbits_des_.selectbox('Select a Variable to Study Usage!',['No_of_Books_read_in_a_year_Number','Event_Duration_Minutes_2_Weeks','Event_Duration_Minutes_5_Weeks',
@@ -209,6 +207,7 @@ tech_pref_analysis.write('\n')
 
 ###### Top Genres
 top_g = st.container(border=True)
+top_g.markdown('<div style="text-align: center; font-size: 24px">Content Engagment and Preferences</div>',unsafe_allow_html=True)
 top_g_chart, top_g_des = top_g.columns([.7,.3])
 top_g_des_des_ = top_g_des.container(border =True)
 top_g_chart_ = top_g_chart.container(border =True)
@@ -278,7 +277,7 @@ genre_pref_des_ = genre_pref_des.container(border=True)
 
 #select boxes for the variables that would be a part of the chart
 genre_pref_var = genre_pref_des_.selectbox('Select a Variable to Study Preferences across Genres!',['Download_vs_Streaming','Language_Preference','Listening_Device_Preference',
-                                                'Listening_Context','Preferred_Listening_Time','Subscription_Type','Average_Listening_Speed'],key=32)                                       
+                                                'Listening_Context','Preferred_Listening_Time','Subscription_Type','Average_Listening_Speed','Top 100 in Respective Genre'],key=32)                                       
 
 #creating the datset that would be displayed
 g_pref = req_data.groupby(['Genre',genre_pref_var])['Ref ID'].count()
