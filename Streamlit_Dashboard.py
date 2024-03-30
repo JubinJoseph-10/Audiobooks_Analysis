@@ -34,7 +34,8 @@ demo_listening_habs_des_ = demo_listening_habs_des.container(border =True)
 demo_listening_habs_chart_space_ = demo_listening_habs_chart_space.container(border =True)
 
 demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 18px">User Habbits</div>',unsafe_allow_html=True)
-demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 18px"> Understanding the influence of demographics, including age, gender, and city, on audiobook listening habits and preferences is crucial in tailoring content and enhancing user experience.</div>',unsafe_allow_html=True)
+demo_listening_habs_des_.write('\n')
+demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 14px"> Understanding the influence of demographics, including age, gender, and city, on audiobook listening habits and preferences is crucial in tailoring content and enhancing user experience.</div>',unsafe_allow_html=True)
 demo_listening_habs_des_.write('\n')
 
 
