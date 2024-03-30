@@ -105,11 +105,11 @@ corr_data['No_of_Books_read_in_a_year_Number'] = req_data['No_of_Books_read_in_a
 corr_data['Membership_Duration'] = req_data['Membership_Duration']
 corr_data['Product_Running_Time'] = req_data['Product_Running_Time']
 
-#linebefore heatmap
-demo_listening_habs.divider()
+
 #plotting the correlation heatmap
+demo_commute_corr = demo_listening_habs.container(border=True)  
 heatmap = px.imshow(corr_data.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect=3,text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for all the Variables Related to Commuting and Audiobook Consumption',height=700)
-demo_listening_habs.plotly_chart(heatmap,use_container_width=True)
+demo_commute_corr.plotly_chart(heatmap,use_container_width=True)
 
 
 
