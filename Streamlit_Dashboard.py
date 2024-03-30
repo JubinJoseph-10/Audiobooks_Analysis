@@ -113,6 +113,20 @@ demo_commute_corr.plotly_chart(heatmap,use_container_width=True)
 
 
 
+##### key takeaways from the analysis on user preferences and habits given demographics
+user_hab_pref_analysis = demo_listening_habs.container(border=True) 
+user_hab_pref_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for User Demographics, Habbits and Preferences</div>',unsafe_allow_html=True)
+user_hab_pref_analysis.write('\n')
+user_hab_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. Comparative analysis of different age groups along with user habit suggest that the late adult population (over 50 years) form the biggest groups of users who consistently use the platform through their membership and read the greatest number of books. However, it must be noted that these people prefer shorter books (with a lesser PRT) as compared to younger adults and middle adults and are considerably conservative in exploring genres.</div>',unsafe_allow_html=True)
+user_hab_pref_analysis.write('\n')
+user_hab_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">2. While the greatest number of books are being read and completed in Delhi, South Indian cities like Bangalore, Hyderabad and Chennai have the greatest number of readers who consistently listen over a 5-week period and have the longest duration of memberships.</div>',unsafe_allow_html=True)
+user_hab_pref_analysis.write('\n')
+user_hab_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">3. An analysis across genders suggests both genders follow similar trends in terms of engagement rate, genre exploration, time spent browsing, number of books completed and so on. Women take the lead in their consistency of reading over a period of 5 weeks and for the number of books read.</div>',unsafe_allow_html=True)
+user_hab_pref_analysis.write('\n')
+user_hab_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">4. Bivariate analysis of commuting and general travel patterns is consistent and shows that people generally prefer to listen to audiobooks while travelling in Public Transport, 4 wheelers (shared, pooled, personal or otherwise), and while walking. Data shows people read longer materials while walking and have the highest number of completed books in the ‘other’ category.</div>',unsafe_allow_html=True)
+user_hab_pref_analysis.write('\n')
+
+
 ###### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
 dev_pref_habbits = st.container(border=True)
