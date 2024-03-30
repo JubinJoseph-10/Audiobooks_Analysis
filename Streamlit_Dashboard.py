@@ -337,7 +337,7 @@ top_g_analysis_pref.write('\n')
 #########################################################################################################################################################################################################################################################################################################################################################
 #########################################################################################################################################################################################################################################################################################################################################################
 corr_data_engagement_ = st.container(border=True)
-_.markdown('<div style="text-align: center; font-size: 24px">Correlation between type of Subscription and User Enagagement and Retention</div>',unsafe_allow_html=True)
+corr_data_engagement_.markdown('<div style="text-align: center; font-size: 24px">Correlation between type of Subscription and User Enagagement and Retention</div>',unsafe_allow_html=True)
 corr_data_engagement_.write('\n')
 
 corr_data_engagement=pd.DataFrame()
