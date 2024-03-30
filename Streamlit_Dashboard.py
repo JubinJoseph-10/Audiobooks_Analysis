@@ -386,7 +386,7 @@ dem_subs=pd.DataFrame(g_pref)
 dem_subs.reset_index(inplace=True)
 dem_subs.rename(columns={'Ref ID':'Number of Users'},inplace=True)
 
-dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x='Genre',barmode='group',
+dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x=sub_var,barmode='group',
                         y='Number of Users',title=f'Preference Trends about Subscription Type over {subs_var}')
 corr_data_engagement_chart_.plotly_chart(dem_subs_chart)
 
