@@ -354,19 +354,6 @@ heatmap_user_engage = px.imshow(corr_data_engagement.corr(method='spearman').rou
 corr_engagement = corr_data_engagement_.container(border=True)
 corr_engagement.plotly_chart(heatmap_user_engage,use_container_width=True)
 
-user_ret_engage_analysis = corr_data_engagement_.container(border=True)
-user_ret_engage_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for User Enagagement and Retention given Subscription Type</div>',unsafe_allow_html=True)
-user_ret_engage_analysis.write('\n')
-user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. The most popular genres to have the greatest number of subscriptions are Literature and Fiction, Parenting and Relationships genres.</div>',unsafe_allow_html=True)
-user_ret_engage_analysis.write('\n')
-user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">2. Additionally, the data suggested different age groups as well as smartphone users generally prefer a per-book based subscription. This has also been supported by market research by Polaris which stated that the segment dedicated to one-time downloads is anticipated to dominate the market, boasting the highest share. This is because it empowers users to procure individual audiobooks without obligating them to subscribe to a service. The only exception to this being the ages 25-30 who also show a strong inclination for monthly subscription.</div>',unsafe_allow_html=True)
-user_ret_engage_analysis.write('\n')
-user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">3. On the other hand, there was no stark difference between listening device preferences and membership duration. Demographic details suggested that users over the age of 50 have the longest duration of membership, and Southern cities along with Delhi and Pune have users with longer membership duration. There was no significant difference for membership duration among the genders.</div>',unsafe_allow_html=True)
-user_ret_engage_analysis.write('\n')
-#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">4. An interesting note shows that middle adults (36-40) not only show a comparatively high preference for ‘parenting and relationship’ genre in tandem with a tendency for the highest listening speed (over 1.5 times) and the highest completion rate for ‘teen and young adult’ genres. Similarly, while the number of users for the lifestyle genre stems low, it is preferred quite high among both the genders.</div>',unsafe_allow_html=True)
-#user_ret_engage_analysis.write('\n')
-#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
-#user_ret_engage_analysis.write('\n')
 
 
 corr_data_engagement_des,corr_data_engagement_chart = corr_data_engagement_ .columns([.3,.7])
@@ -398,7 +385,7 @@ subs_ret_en_chart_ = subs_ret_en_chart.container(border=True)
 subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
 #select boxes for the variables that would be a part of the chart
-subs_var__ret = subs_ret_en_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=1024)                                       
+subs_var__ret = subs_ret_en_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric'],key=1024)                                       
 subs_var__ret_eval = subs_ret_en_des_.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
 
 corr_data_engagement_des_.write('\n')
@@ -422,7 +409,25 @@ mon_ret_en_chart = px.bar(mon_ret_en,y=subs_var__ret,x='Subscription_Type',color
 subs_ret_en_chart_.plotly_chart(mon_ret_en_chart)
 
 
-#Determining the popularity and discovery
+user_ret_engage_analysis = corr_data_engagement_.container(border=True)
+user_ret_engage_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for User Enagagement and Retention given Subscription Type</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. The most popular genres to have the greatest number of subscriptions are Literature and Fiction, Parenting and Relationships genres.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">2. Additionally, the data suggested different age groups as well as smartphone users generally prefer a per-book based subscription. This has also been supported by market research by Polaris which stated that the segment dedicated to one-time downloads is anticipated to dominate the market, boasting the highest share. This is because it empowers users to procure individual audiobooks without obligating them to subscribe to a service. The only exception to this being the ages 25-30 who also show a strong inclination for monthly subscription.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">3. On the other hand, there was no stark difference between listening device preferences and membership duration. Demographic details suggested that users over the age of 50 have the longest duration of membership, and Southern cities along with Delhi and Pune have users with longer membership duration. There was no significant difference for membership duration among the genders.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">4. An interesting note shows that middle adults (36-40) not only show a comparatively high preference for ‘parenting and relationship’ genre in tandem with a tendency for the highest listening speed (over 1.5 times) and the highest completion rate for ‘teen and young adult’ genres. Similarly, while the number of users for the lifestyle genre stems low, it is preferred quite high among both the genders.</div>',unsafe_allow_html=True)
+#user_ret_engage_analysis.write('\n')
+#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
+#user_ret_engage_analysis.write('\n')
+
+
+
+#########################################################################################################################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################################################################################################################
+##########################################################################################################################################################################################################################################################################################################################################################Determining the popularity and discovery
 popularity_scores_ = st.container(border=True)
 test=pd.DataFrame()
 test['Ratings_Given'] = req_data['Ratings_Given'] 
