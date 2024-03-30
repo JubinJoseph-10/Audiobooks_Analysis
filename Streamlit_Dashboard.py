@@ -103,8 +103,7 @@ corr_data['Product_Running_Time'] = req_data['Product_Running_Time']
 
 #plotting the correlation heatmap
 heatmap = px.imshow(corr_data.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect=3,text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for all the Variables Related to Commuting and Audiobook Consumption',height=700)
-corr = st.container(border=True)
-corr.plotly_chart(heatmap,use_container_width=True)
+demo_listening_habs.plotly_chart(heatmap,use_container_width=True)
 
 
 
