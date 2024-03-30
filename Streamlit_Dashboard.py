@@ -376,7 +376,7 @@ corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True)
 
 
 #select boxes for the variables that would be a part of the chart
-subs_var__ = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=512)                                       
+subs_var__ = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=2048)                                       
 
 corr_data_engagement_des_.write('\n')
 
@@ -399,7 +399,7 @@ subs_ret_en_chart_ = subs_ret_en_chart.container(border=True)
 subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
 #select boxes for the variables that would be a part of the chart
-subs_var__ret = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=512)                                       
+subs_var__ret = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=1024)                                       
 subs_var__ret_eval = top_genres__.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
 
 corr_data_engagement_des_.write('\n')
