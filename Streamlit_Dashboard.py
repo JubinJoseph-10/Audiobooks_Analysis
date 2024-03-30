@@ -417,8 +417,8 @@ mon_ret_en = subs_eval_(subs_var__ret_eval)
 
 st.dataframe(mon_ret_en)  
 
-mon_ret_en_chart = px.bar(mon_ret_en,color=subs_var__ret,x='Subscription_Type',
-                        y=demo_eval_var,title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
+mon_ret_en_chart = px.bar(mon_ret_en,y=subs_var__ret,x='Subscription_Type',
+                    title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
 subs_ret_en_chart_.plotly_chart(mon_ret_en_chart)
 
 
