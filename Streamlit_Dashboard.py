@@ -112,6 +112,8 @@ demo_listening_habs.plotly_chart(heatmap,use_container_width=True)
 ###### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
 dev_pref_habbits = st.container(border=True)
+demo_listening_habs.markdown('<div style="text-align: center; font-size: 24px">Trends Related to Device and Technology Usage</div>',unsafe_allow_html=True)
+demo_listening_habs.write('\n')
 dev_pref_habbits_des , dev_pref_chart_space = dev_pref_habbits.columns([.3,.7])
 dev_pref_habbits_des_ = dev_pref_habbits_des.container(border =True)
 dev_pref_chart_space_ = dev_pref_chart_space.container(border =True)
@@ -136,8 +138,7 @@ dev_pref_chart_space_.plotly_chart(tech_usage_chart)
 
 ###### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
-dev_pref = st.container(border=True)
-dev_pref_des,dev_pref_chart_ = dev_pref.columns([.3,.7])
+dev_pref_des,dev_pref_chart_ = dev_pref_habbits.columns([.3,.7])
 dev_pref_des_ = dev_pref_des.container(border =True)
 dev_pref_chart_ = dev_pref_chart_.container(border =True)
 
