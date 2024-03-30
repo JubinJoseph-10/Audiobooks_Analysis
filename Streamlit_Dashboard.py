@@ -57,7 +57,7 @@ demo_listening_habs_chart_space_.plotly_chart(habbit_chart)
 
 #structuring the space for the analysis
 demo_listening_pref = st.container(border=True)
-demo_listening_pref_des , demo_listening_pref_chart_space = demo_listening_pref.columns([.5,.5])
+demo_listening_pref_des , demo_listening_pref_chart_space = demo_listening_habs.columns([.3,.7])
 demo_listening_pref_des_ = demo_listening_pref_des.container(border =True)
 demo_listening_pref_chart_space_ = demo_listening_pref_chart_space.container(border =True)
 
