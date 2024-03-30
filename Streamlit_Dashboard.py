@@ -27,11 +27,12 @@ req_data = pd.read_csv("Data/Audible_Dashboard_Data.csv")
 
 #structuring the space for the analysis
 demo_listening_habs = st.container(border=True)
+demo_listening_habs.markdown('<div style="text-align: center; font-size: 16px">Impact of Demographics on User Habbits</div>',unsafe_allow_html=True)
 demo_listening_habs_chart_space ,demo_listening_habs_des = demo_listening_habs.columns([.7,.3])
 demo_listening_habs_des_ = demo_listening_habs_des.container(border =True)
 demo_listening_habs_chart_space_ = demo_listening_habs_chart_space.container(border =True)
 
-demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 24px">Impact of Demographics on User Habbits</div>',unsafe_allow_html=True)
+demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 24px"></div>',unsafe_allow_html=True)
 demo_listening_habs_des_.markdown('<div style="text-align: justify; font-size: 16px"></div>',unsafe_allow_html=True)
 
 
