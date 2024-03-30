@@ -394,7 +394,32 @@ dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x=subs_var__,barmode=
 corr_data_engagement_chart_.plotly_chart(dem_subs_chart)
 
 
+subs_ret_en_chart ,subs_ret_en_des  = corr_data_engagement_ .columns([.7,.3])
+subs_ret_en_chart_ = subs_ret_en_chart.contaniner(border=True)
+subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
+#select boxes for the variables that would be a part of the chart
+subs_var__ret = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=512)                                       
+subs_var__ret_eval = top_genres__.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
+
+corr_data_engagement_des_.write('\n')
+
+
+## funtion to return apprpriate df for plotting
+def subs_eval_(eval_):
+    if eval_ =='Average of Values':
+        top_g = pd.DataFrame(req_data.groupby(['Subscription_Type'])[subs_var__ret].mean().round(2)).reset_index()
+        return top_g
+    elif eval_ == 'Sum of Values':
+        top_g = pd.DataFrame(req_data.groupby(['Subscription_Type'])[subs_var__ret].sum()).reset_index()
+        return top_g
+
+mon_ret_en = subs_eval_(subs_var__ret_eval)
+
+
+mon_ret_en_chart = px.bar(mon_ret_en,color=subs_var__ret,x='Subscription_Type',
+                        y=demo_eval_var,title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
+subs_ret_en_chart_.plotly_chart(mon_ret_en_chart)
 
 
 #Determining the popularity and discovery
