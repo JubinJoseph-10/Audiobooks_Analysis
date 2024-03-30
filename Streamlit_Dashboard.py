@@ -355,7 +355,7 @@ corr_engagement = corr_data_engagement_.container(border=True)
 corr_engagement.plotly_chart(heatmap_user_engage,use_container_width=True)
 
 user_ret_engage_analysis = corr_data_engagement_.container(border=True)
-user_ret_engage_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for Useer Enagagement and Retention given Subscription Type</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for User Enagagement and Retention given Subscription Type</div>',unsafe_allow_html=True)
 user_ret_engage_analysis.write('\n')
 user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. The most popular genres to have the greatest number of subscriptions are Literature and Fiction, Parenting and Relationships genres.</div>',unsafe_allow_html=True)
 user_ret_engage_analysis.write('\n')
@@ -368,6 +368,27 @@ user_ret_engage_analysis.write('\n')
 #user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
 #user_ret_engage_analysis.write('\n')
 
+
+corr_data_engagement_des,corr_data_engagement_chart = corr_data_engagement.columns([.3,.7])
+corr_data_engagement_des_ = corr_data_engagement_des.container(border=True)
+corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True) 
+
+
+
+#select boxes for the variables that would be a part of the chart
+subs_var = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=32)                                       
+
+corr_data_engagement_des_.write('\n')
+
+#creating the datset that would be displayed
+dem_subs = req_data.groupby([subs_var,'Subscription_Type'])['Ref ID'].count()
+dem_subs=pd.DataFrame(g_pref)
+dem_subs.reset_index(inplace=True)
+dem_subs.rename(columns={'Ref ID':'Number of Users'},inplace=True)
+
+dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x='Genre',barmode='group',
+                        y='Number of Users',title=f'Preference Trends about Subscription Type over {subs_var}')
+corr_data_engagement_chart_.plotly_chart(dem_subs_chart)
 
 
 
