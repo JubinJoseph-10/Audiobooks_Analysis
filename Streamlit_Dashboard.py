@@ -386,7 +386,6 @@ dem_subs=pd.DataFrame(dem_subs)
 dem_subs.reset_index(inplace=True)
 dem_subs.rename(columns={'Ref ID':'Number of Users'},inplace=True)
 
-st.dataframe(dem_subs)
 
 dem_subs_chart = px.bar(dem_subs,color='Subscription_Type',x=subs_var__,barmode='group',
                         y='Number of Users',title=f'Preference Trends about Subscription Type over {subs_var__}')
@@ -416,6 +415,7 @@ def subs_eval_(eval_):
 
 mon_ret_en = subs_eval_(subs_var__ret_eval)
 
+st.dataframe(mon_ret_en)  
 
 mon_ret_en_chart = px.bar(mon_ret_en,color=subs_var__ret,x='Subscription_Type',
                         y=demo_eval_var,title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
