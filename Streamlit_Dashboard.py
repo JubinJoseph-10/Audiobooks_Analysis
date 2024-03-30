@@ -247,8 +247,7 @@ top_g_chart_.plotly_chart(yop_g_chart)
 
 
 ############ Genre Space 
-top_genres = st.container(border=True)
-top_genres_ , top_genres_var = st.columns([.3,.7])
+top_genres_ , top_genres_var = top_g.columns([.3,.7])
 top_genres_var_ = top_genres_var.container(border=True)
 top_genres__ = top_genres_.container(border=True)
 
@@ -263,6 +262,7 @@ demo_eval_var = top_genres__.selectbox('Select a Basis to Decide Top Genre!',['N
                                                 'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration','Engagement_Rate'])
 demo_eval_var_basis = top_genres__.selectbox('Select an Aritmetic Basis to Decide Top Genre!',['Average of Values','Sum of Values'])
 
+top_genres__.write('\n')
 
 ## funtion to return apprpriate df for plotting
 def count_top_g(eval_):
@@ -281,8 +281,7 @@ top_genres_var_.plotly_chart(top_g_basis_chart)
 
 
 #####
-genre_pref = st.container(border=True)
-genre_pref_chart , genre_pref_des = genre_pref.columns([.7,.3])
+genre_pref_chart , genre_pref_des = top_g.columns([.7,.3])
 genre_pref_chart_ = genre_pref_chart.container(border=True)
 genre_pref_des_ = genre_pref_des.container(border=True)
 
@@ -310,6 +309,23 @@ g_pref_chart = px.bar(g_pref,color=genre_pref_var,x='Genre',barmode='group',
 genre_pref_chart_.plotly_chart(g_pref_chart)
 
 
+top_g_analysis_pref = top_g.container(border=True)
+##### key takeaways from the analysis on user preferences and habits given demographics
+top_g_analysis_pref.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for Top Genres and its Implications!</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">1. The most popular genres of books across the platform for various age groups, regions and genders are Literature and fiction, Parenting and Relationships, and Religion and Spirituality.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">2. While people from ages 18-40 prefer to listen at an average speed of 1.5 (approximately) for various genres, older adults like 46 years and older tend to listen to religious and spiritual material at twice the speed while preferring mysteries and thrillers, lifestyle and biographies and memoirs at normal.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">3. In terms of completion rate, different age groups show different preferences such as, 50 years old and above tend to complete mysteries and thrillers whereas 36-40 years old tend to complete materials of “teen and young adult” genre and even more, 31- 35-year-olds show a higher completion rate for arts and entertainment.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">4. An interesting note shows that middle adults (36-40) not only show a comparatively high preference for ‘parenting and relationship’ genre in tandem with a tendency for the highest listening speed (over 1.5 times) and the highest completion rate for ‘teen and young adult’ genres. Similarly, while the number of users for the lifestyle genre stems low, it is preferred quite high among both the genders.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+
+
+
 ################Correlation
 corr_data_engagement=pd.DataFrame()
 corr_data_engagement = pd.get_dummies(req_data['Subscription_Type'])
@@ -318,6 +334,8 @@ corr_data_engagement['Retention'] = req_data['Users_Retained_5Weeks']
 corr_data_engagement['Membership_Duration'] = req_data['Membership_Duration']
 corr_data_engagement['Number_of_Audiobooks_Completed'] = req_data['Number_of_Audiobooks_Completed']
 corr_data_engagement['Number_of_Audiobooks_Purchased'] = req_data['Number_of_Audiobooks_Purchased']
+
+
 
 
 #plotting the correlation heatmap
