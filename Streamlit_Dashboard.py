@@ -208,14 +208,21 @@ tech_pref_analysis.write('\n')
 ###### Top Genres
 top_g = st.container(border=True)
 top_g.markdown('<div style="text-align: center; font-size: 24px">Content Engagment and Preferences</div>',unsafe_allow_html=True)
+top_g.write('\n')
 top_g_chart, top_g_des = top_g.columns([.7,.3])
 top_g_des_des_ = top_g_des.container(border =True)
 top_g_chart_ = top_g_chart.container(border =True)
 
+top_g_des_des_.markdown('<div style="text-align: justify; font-size: 18px">Analysing top Genres given Demographics!</div>',unsafe_allow_html=True)
+top_g_des_des_.write('\n')
+top_g_des_des_.markdown('<div style="text-align: justify; font-size: 14px"> This section delves into the analysis of popular genres among diverse user segments and offers insights into how Audible can adjust its content acquisition strategy accordingly. In this first analysis you can explore top genres across different demographic user segments and also decide the metric you would like to use in order to decide the top genres!</div>',unsafe_allow_html=True)
+top_g_des_des_.write('\n')
 
 #select boxes for the variables that would be a part of the chart
 basis_top_g = top_g_des_des_.selectbox('Select a Demographic Variable to Study!',['Age_Group','City','Gender','Commuting_Mode'],key=64)
 metric_ = top_g_des_des_.selectbox('Select a Metric to Evaluate!',['Number of Users','Listening_Speed_Numeric','Completion_Rate_5_Weeks'])
+
+top_g_des_des_.write('\n')
 
 def analyssis_sel(met):
     if met=='Number of Users':
@@ -245,6 +252,10 @@ top_genres_ , top_genres_var = st.columns([.3,.7])
 top_genres_var_ = top_genres_var.container(border=True)
 top_genres__ = top_genres_.container(border=True)
 
+top_genres__.markdown('<div style="text-align: justify; font-size: 18px">Analysing top Genres given KPIs of your choice!</div>',unsafe_allow_html=True)
+top_genres__.write('\n')
+top_genres__.markdown('<div style="text-align: justify; font-size: 14px">Furthermore, it explores the variations in book completion rates and listening speeds across different genres and demographics. In this second analysis within this section you are free to explore the Top Genres given a KPI of your choice and also want measure of KPI.</div>',unsafe_allow_html=True)
+top_genres__.write('\n')
 
 #select boxes for the variables that would be a part of the chart
 #demo_sel = top_genres_var_.selectbox('Select a Demographic Related Variable to Study!',['Age_Group','City','Gender','Commuting_Mode'],key=16)
@@ -275,9 +286,18 @@ genre_pref_chart , genre_pref_des = genre_pref.columns([.7,.3])
 genre_pref_chart_ = genre_pref_chart.container(border=True)
 genre_pref_des_ = genre_pref_des.container(border=True)
 
+
+genre_pref_des_.markdown('<div style="text-align: justify; font-size: 18px">Analysing Underlying Preferences wihin Genres and Segments!</div>',unsafe_allow_html=True)
+genre_pref_des_.write('\n')
+genre_pref_des_.markdown('<div style="text-align: justify; font-size: 14px">By understanding these dynamics, Audible can tailor its offerings to better meet the preferences and behaviors of its user base, thereby enhancing user satisfaction and engagement. In this third section on genres, users can drill down further to see how user preferences might differ in a given genre that they are exploring.</div>',unsafe_allow_html=True)
+genre_pref_des_.write('\n')
+
+
 #select boxes for the variables that would be a part of the chart
 genre_pref_var = genre_pref_des_.selectbox('Select a Variable to Study Preferences across Genres!',['Download_vs_Streaming','Language_Preference','Listening_Device_Preference',
                                                 'Listening_Context','Preferred_Listening_Time','Subscription_Type','Average_Listening_Speed','Top 100 in Respective Genre'],key=32)                                       
+
+genre_pref_des_.write('\n')
 
 #creating the datset that would be displayed
 g_pref = req_data.groupby(['Genre',genre_pref_var])['Ref ID'].count()
