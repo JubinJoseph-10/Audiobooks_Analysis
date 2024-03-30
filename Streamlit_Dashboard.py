@@ -398,8 +398,8 @@ subs_ret_en_chart_ = subs_ret_en_chart.container(border=True)
 subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
 #select boxes for the variables that would be a part of the chart
-subs_var__ret = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=1024)                                       
-subs_var__ret_eval = top_genres__.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
+subs_var__ret = subs_ret_en_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Download_vs_Streaming'],key=1024)                                       
+subs_var__ret_eval = subs_ret_en_des_.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
 
 corr_data_engagement_des_.write('\n')
 
@@ -417,7 +417,7 @@ mon_ret_en = subs_eval_(subs_var__ret_eval)
 
 st.dataframe(mon_ret_en)  
 
-mon_ret_en_chart = px.bar(mon_ret_en,y=subs_var__ret,x='Subscription_Type',
+mon_ret_en_chart = px.bar(mon_ret_en,y=subs_var__ret,x='Subscription_Type',color = 'Subscription_Type
                     title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
 subs_ret_en_chart_.plotly_chart(mon_ret_en_chart)
 
