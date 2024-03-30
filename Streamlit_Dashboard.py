@@ -360,11 +360,14 @@ corr_data_engagement_des,corr_data_engagement_chart = corr_data_engagement_ .col
 corr_data_engagement_des_ = corr_data_engagement_des.container(border=True)
 corr_data_engagement_chart_ = corr_data_engagement_chart.container(border=True) 
 
+corr_data_engagement_des_.markdown('<div style="text-align: justify; font-size: 18px">Analysing Subscription Preferences over Demographics!</div>',unsafe_allow_html=True)
+corr_data_engagement_des_.write('\n')
+corr_data_engagement_des_.markdown('<div style="text-align: justify; font-size: 14px">his section delves into the correlation between different subscription models (monthly, yearly, per-book) and user engagement as well as retention rates. It also examines insights derived from analyzing membership duration alongside the number of audiobooks purchased or completed.</div>',unsafe_allow_html=True)
+corr_data_engagement_des_.write('\n')
 
 
 #select boxes for the variables that would be a part of the chart
 subs_var__ = corr_data_engagement_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Age_Group','City','Gender','Commuting_Mode','Genre'],key=2048)                                       
-
 corr_data_engagement_des_.write('\n')
 
 #creating the datset that would be displayed
@@ -384,11 +387,17 @@ subs_ret_en_chart ,subs_ret_en_des  = corr_data_engagement_ .columns([.7,.3])
 subs_ret_en_chart_ = subs_ret_en_chart.container(border=True)
 subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
-#select boxes for the variables that would be a part of the chart
-subs_var__ret = subs_ret_en_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric'],key=1024)                                       
-subs_var__ret_eval = subs_ret_en_des_.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
 
-corr_data_engagement_des_.write('\n')
+subs_ret_en_des_.markdown('<div style="text-align: justify; font-size: 18px">Analysing Engagement Rates and Customers Retained over type of Subscription!</div>',unsafe_allow_html=True)
+subs_ret_en_des_.write('\n')
+subs_ret_en_des_.markdown('<div style="text-align: justify; font-size: 14px"> By exploring these metrics, valuable insights can be gained regarding how subscription models impact user behavior and loyalty, providing actionable information for optimizing Audible\'s subscription offerings and retention strategies.</div>',unsafe_allow_html=True)
+subs_ret_en_des_.write('\n')
+
+
+#select boxes for the variables that would be a part of the chart
+subs_var__ret = subs_ret_en_des_.selectbox('Select a Variable to Study Preferences across Type of Subscriptions!',['Users_Retained_5Weeks','Engagement_Rate','Membership_Duration','Listening_Speed_Numeric','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','No_of_Books_read_in_a_year_Number'],key=1024)                                       
+subs_var__ret_eval = subs_ret_en_des_.selectbox('Select an Aritmetic Basis to Evaluate!',['Average of Values','Sum of Values'])
+subs_ret_en_des_.write('\n')
 
 
 ## funtion to return apprpriate df for plotting
@@ -402,7 +411,6 @@ def subs_eval_(eval_):
 
 mon_ret_en = subs_eval_(subs_var__ret_eval)
 
-st.dataframe(mon_ret_en)  
 
 mon_ret_en_chart = px.bar(mon_ret_en,y=subs_var__ret,x='Subscription_Type',color = 'Subscription_Type',
                     title=f'{subs_var__ret_eval} of {subs_var__ret} over Type of Subscription')
