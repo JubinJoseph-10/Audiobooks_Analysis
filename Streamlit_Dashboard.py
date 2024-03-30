@@ -23,7 +23,9 @@ st.title('Audiobooks User Analyis')
 
 req_data = pd.read_csv("Data/Audible_Dashboard_Data.csv")
 
-##### Habbits Across Users 
+#########################################################################################################################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################################################################################################################
+######################################################################################################################################################################################################################################################################################################################################################### Habbits Across Users 
 
 #structuring the space for the analysis
 demo_listening_habs = st.container(border=True)
@@ -127,7 +129,9 @@ user_hab_pref_analysis.markdown('<div style="text-align: justify; font-size: 14p
 user_hab_pref_analysis.write('\n')
 
 
-###### Audiobook Usage based on the nature of technology used
+#########################################################################################################################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################################################################################################################
+######################################################################################################################################################################################################################################################################################################################################################### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
 dev_pref_habbits = st.container(border=True)
 dev_pref_habbits.markdown('<div style="text-align: center; font-size: 24px">Trends Related to Device and Technology Usage</div>',unsafe_allow_html=True)
@@ -205,7 +209,10 @@ tech_pref_analysis.markdown('<div style="text-align: justify; font-size: 14px">3
 tech_pref_analysis.write('\n')
 
 
-###### Top Genres
+#########################################################################################################################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################################################################################################################
+######################################################################################################################################################################################################################################################################################################################################################### Top Genres
+
 top_g = st.container(border=True)
 top_g.markdown('<div style="text-align: center; font-size: 24px">Content Engagment and Preferences</div>',unsafe_allow_html=True)
 top_g.write('\n')
@@ -326,7 +333,13 @@ top_g_analysis_pref.write('\n')
 
 
 
-################Correlation
+#########################################################################################################################################################################################################################################################################################################################################################Correlation
+#########################################################################################################################################################################################################################################################################################################################################################
+#########################################################################################################################################################################################################################################################################################################################################################
+corr_data_engagement_ = st.container(border=True)
+corr_data_engagement_.markdown('<div style="text-align: center; font-size: 24px">Correlation between type of Subscription and User Enagagement and Retention</div>',unsafe_allow_html=True)
+corr_data_engagement_.write('\n')
+
 corr_data_engagement=pd.DataFrame()
 corr_data_engagement = pd.get_dummies(req_data['Subscription_Type'])
 corr_data_engagement['Engagemrnt Rate'] = req_data['Engagement_Rate']
@@ -336,12 +349,28 @@ corr_data_engagement['Number_of_Audiobooks_Completed'] = req_data['Number_of_Aud
 corr_data_engagement['Number_of_Audiobooks_Purchased'] = req_data['Number_of_Audiobooks_Purchased']
 
 
-
-
 #plotting the correlation heatmap
-heatmap_user_engage = px.imshow(corr_data_engagement.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect='auto',text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for all the Variables Related to Commuting and Audiobook Consumption',height=500)
-corr_engagement = st.container(border=True)
+heatmap_user_engage = px.imshow(corr_data_engagement.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect='auto',text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for all the Variables Related to User Enagagement and Retention',height=500)
+corr_engagement = corr_data_engagement_.container(border=True)
 corr_engagement.plotly_chart(heatmap_user_engage,use_container_width=True)
+
+user_ret_engage_analysis = corr_data_engagement_.container(border=True)
+user_ret_engage_analysis.markdown('<div style="text-align: center; font-size: 24px">Analysis & Results for Useer Enagagement and Retention given Subscription Type</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">1. The most popular genres to have the greatest number of subscriptions are Literature and Fiction, Parenting and Relationships genres.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">2. Additionally, the data suggested different age groups as well as smartphone users generally prefer a per-book based subscription. This has also been supported by market research by Polaris which stated that the segment dedicated to one-time downloads is anticipated to dominate the market, boasting the highest share. This is because it empowers users to procure individual audiobooks without obligating them to subscribe to a service. The only exception to this being the ages 25-30 who also show a strong inclination for monthly subscription.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">3. On the other hand, there was no stark difference between listening device preferences and membership duration. Demographic details suggested that users over the age of 50 have the longest duration of membership, and Southern cities along with Delhi and Pune have users with longer membership duration. There was no significant difference for membership duration among the genders.</div>',unsafe_allow_html=True)
+user_ret_engage_analysis.write('\n')
+#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">4. An interesting note shows that middle adults (36-40) not only show a comparatively high preference for ‘parenting and relationship’ genre in tandem with a tendency for the highest listening speed (over 1.5 times) and the highest completion rate for ‘teen and young adult’ genres. Similarly, while the number of users for the lifestyle genre stems low, it is preferred quite high among both the genders.</div>',unsafe_allow_html=True)
+#user_ret_engage_analysis.write('\n')
+#user_ret_engage_analysis.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
+#user_ret_engage_analysis.write('\n')
+
+
+
+
 
 
 #Determining the popularity and discovery
