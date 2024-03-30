@@ -395,7 +395,7 @@ corr_data_engagement_chart_.plotly_chart(dem_subs_chart)
 
 
 subs_ret_en_chart ,subs_ret_en_des  = corr_data_engagement_ .columns([.7,.3])
-subs_ret_en_chart_ = subs_ret_en_chart.contaniner(border=True)
+subs_ret_en_chart_ = subs_ret_en_chart.container(border=True)
 subs_ret_en_des_ = subs_ret_en_des.container(border=True)
 
 #select boxes for the variables that would be a part of the chart
