@@ -138,7 +138,7 @@ dev_pref_chart_space_.plotly_chart(tech_usage_chart)
 
 ###### Audiobook Usage based on the nature of technology used
 #structuring the space for the analysis
-dev_pref_des,dev_pref_chart_ = dev_pref_habbits.columns([.3,.7])
+dev_pref_chart_,dev_pref_des = dev_pref_habbits.columns([.7,.3])
 dev_pref_des_ = dev_pref_des.container(border =True)
 dev_pref_chart_ = dev_pref_chart_.container(border =True)
 
@@ -164,7 +164,7 @@ dev_pref_chart_.plotly_chart(tech_pref_chart)
 
 ###### Top Genres
 top_g = st.container(border=True)
-top_g_chart, top_g_des = dev_pref.columns([.7,.3])
+top_g_chart, top_g_des = top_g.columns([.7,.3])
 top_g_des_des_ = top_g_des.container(border =True)
 top_g_chart_ = top_g_chart.container(border =True)
 
