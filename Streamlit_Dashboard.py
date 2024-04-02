@@ -553,7 +553,7 @@ model_retention_rate_class_.text(classification_report(y_test,y_pred_rfc))
 importances = model_rfc.feature_importances_
 
 # Get feature names
-feature_names = X_test[selected_vars].columns.tolist()
+feature_names = selected_vars
 # Create a horizontal bar chart for feature importance
 fig = go.Figure(go.Bar(
     x=feature_names,
