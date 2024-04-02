@@ -595,14 +595,13 @@ smt = SMOTE()
 #X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)),test_size=0.25)
 @st.cache_resource
 def sel_feat_returner():
-    X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Completed'],axis=1))
+    X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
     X, y = smt.fit_resample(X_Scaled,req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat =  model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
-                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1).columns[sel.get_support()]
+    selected_feat =  model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[sel.get_support()]
     return selected_feat,X_train,X_test,y_train,y_test 
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
@@ -612,8 +611,7 @@ selected_vars = model_ratings_chart_.multiselect('Select Variables for the Model
 
 #training the model on selected features and then 
 model_rfc = RandomForestClassifier()
-X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased',
-                                 'Number_of_Audiobooks_Completed','Number_of_Audiobooks_Completed'],axis=1)[selected_feat])
+X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1)[selected_feat])
 X, y = smt.fit_resample(X_Scaled,req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)                                                               
 model_rfc.fit(X_train,y_train)
