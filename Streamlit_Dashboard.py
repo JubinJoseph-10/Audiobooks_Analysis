@@ -513,14 +513,14 @@ scaler = StandardScaler()
 #X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0),test_size=0.25)
 @st.cache_resource
 def sel_feat_returner():
-    X, y = smt.fit_resample(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
-                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1),req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0))
-    X_Scaled = scaler.fit_transform(X)
-    X_train,X_test,y_train,y_test = train_test_split(X_Scaled,y,test_size=0.25)
+    X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
+                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1))
+    X, y = smt.fit_resample(X_Scaled,req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0))
+    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat = X_train.columns.tolist()[sel.get_support()]
+    selected_feat = X_train.columns[sel.get_support()]
     return selected_feat,X_train,X_test,y_train,y_test
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
