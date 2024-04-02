@@ -598,14 +598,15 @@ smt = SMOTE()
 #X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)),test_size=0.25)
 @st.cache_resource
 def sel_feat_returner():
-    X, y = smt.fit_resample(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
-                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1),req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
-    X_Scaled = scaler.fit_transform(X)
-    X_train,X_test,y_train,y_test = train_test_split(X_Scaled,y,test_size=0.25)
+    X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased',
+                                                                 'Number_of_Audiobooks_Completed','Number_of_Audiobooks_Completed'],axis=1)[selected_feat])
+    X, y = smt.fit_resample(X_Scaled,req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
+    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat = X_train.columns[(sel.get_support())]
+    selected_feat =  model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
+                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1).columns[sel.get_support()]
     return selected_feat,X_train,X_test,y_train,y_test 
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
@@ -615,8 +616,12 @@ selected_vars = model_ratings_chart_.multiselect('Select Variables for the Model
 
 #training the model on selected features and then 
 model_rfc = RandomForestClassifier()
-model_rfc.fit(X_train[selected_vars],y_train)
-y_pred_rfc = model_rfc.predict(X_test[selected_vars])
+X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased',
+                                 'Number_of_Audiobooks_Completed','Number_of_Audiobooks_Completed'],axis=1)[selected_feat])
+X, y = smt.fit_resample(X_Scaled,req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)                                                               
+model_rfc.fit(X_train,y_train)
+y_pred_rfc = model_rfc.predict(X_test)
 
 
 #visualisation of accracy
@@ -634,7 +639,7 @@ model_ratings_class_.text(classification_report(y_test,y_pred_rfc))
 importances = model_rfc.feature_importances_
 
 # Get feature names
-feature_names = X_test[selected_vars].columns.tolist()
+feature_names = selected_vars
 # Create a horizontal bar chart for feature importance
 fig = go.Figure(go.Bar(
     x=feature_names,
@@ -666,9 +671,9 @@ smt = SMOTE()
 X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Recommendations_Followed'],test_size=0.25)
 @st.cache_resource
 def sel_feat_returner():
-    X, y = smt.fit_resample(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Recommendations_Followed'])
-    X_Scaled = scaler.fit_transform(X)
-    X_train,X_test,y_train,y_test = train_test_split(X_Scaled,y,test_size=0.25)
+    X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
+    X, y = smt.fit_resample(X_Scaled,req_data['Recommendations_Followed'])
+    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
@@ -682,8 +687,10 @@ selected_vars = model_recomm_follow_chart_.multiselect('Select Variables for the
 
 #training the model on selected features and then 
 model_rfc = RandomForestClassifier()
-model_rfc.fit(X_train[selected_vars],y_train)
-y_pred_rfc = model_rfc.predict(X_test[selected_vars])
+X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1)[selected_feat])
+X, y = smt.fit_resample(X_Scaled,req_data['Recommendations_Followed'])
+model_rfc.fit(X_train,y_train)
+y_pred_rfc = model_rfc.predict(X_test)
 
 
 #visualisation of accracy
@@ -701,7 +708,7 @@ model_recomm_follow_class_.text(classification_report(y_test,y_pred_rfc))
 importances = model_rfc.feature_importances_
 
 # Get feature names
-feature_names = X_test[selected_vars].columns.tolist()
+feature_names = selected_vars
 # Create a horizontal bar chart for feature importance
 fig = go.Figure(go.Bar(
     x=feature_names,
