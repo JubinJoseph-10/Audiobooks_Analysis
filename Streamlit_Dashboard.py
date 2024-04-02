@@ -149,7 +149,7 @@ dev_pref_habbits_des_.write('\n')
 #select boxes for the variables that would be a part of the chart
 tech_var_pref = dev_pref_habbits_des_.selectbox('Select a Technology Related Variable to Study!',['Smart_Phone','Tablet','Device_Type','Listening_Device_Preference'])
 tech_pref_Var_ = dev_pref_habbits_des_.selectbox('Select a Variable to Study Usage!',['No_of_Books_read_in_a_year_Number','Event_Duration_Minutes_2_Weeks','Event_Duration_Minutes_5_Weeks',
-                                                'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration','Engagement_Rate'])
+                                                'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration','Engagement_Rate','Listening_Speed_Numeric'])
 
 dev_pref_habbits_des_.write('\n')
 
