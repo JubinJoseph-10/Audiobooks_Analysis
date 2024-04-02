@@ -519,8 +519,7 @@ def sel_feat_returner():
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed',
-                                             'Number_of_Audiobooks_Purchased','Number_of_Audiobooks_Completed'],axis=1).columns[sel.get_support()]
+    selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[sel.get_support()]
     return selected_feat,X_train,X_test,y_train,y_test
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
