@@ -531,9 +531,12 @@ selected_vars = model_retention_rate_chart_.multiselect('Select Variables for th
 
 #training the model on selected features and then 
 model_rfc = RandomForestClassifier()
-model_rfc.fit(X_train[selected_vars],y_train)
-y_pred_rfc = model_rfc.predict(X_test[selected_vars])
-
+X_Scaled = scaler.fit_tranform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased',
+                                                                 'Number_of_Audiobooks_Completed'],axis=1)[selected_feat])
+X, y = smt.fit_resample(X_Scaled,req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0))
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
+model_rfc.fit(X_Scaled,y_train)
+y_pred_rfc = model_rfc.predict(X_test)
 
 #visualisation of accracy
 cm = confusion_matrix(y_test, y_pred_rfc)
