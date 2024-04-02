@@ -709,7 +709,72 @@ fig.update_layout(
 
 model_recomm_follow_chart_.plotly_chart(fig,use_container_width=True)
 
+#########################################################################################################
 
+model_social_sharing = st.container(border=True)
+model_social_sharing.markdown('<div style="text-align: center; font-size: 24px">Predictive Model on Social Sharing</div>',unsafe_allow_html=True)
+model_social_sharing.divider()
+model_social_sharing_class,model_social_sharing_chart = model_social_sharing.columns([.35,.65]) 
+model_social_sharing_class_ = model_social_sharing_class.container(border=True)
+model_social_sharing_chart_ = model_social_sharing_chart.container(border=True)
+
+
+#from sklearn.ensemble import RandomForestClassfier
+smt = SMOTE()
+#Xrroin yrroin ± smr.irresompLe(Xrroin yrrin)
+#X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Social_Sharing'],test_size=0.25)
+@st.cache_resource
+def sel_feat_returner():
+    X, y = smt.fit_resample(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed','Number_of_Audiobooks_Purchased',
+                                                                  'Number_of_Audiobooks_Completed'],axis=1),req_data['Social_Sharing'])
+    X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
+    sel = SelectFromModel(RandomForestClassifier())
+    sel.fit(X_train, y_train)
+    sel.get_support()
+    selected_feat = X_train.columns[(sel.get_support())]
+    return selected_feat,X_train,X_test,y_train,y_test
+
+selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
+
+selected_vars = model_social_sharing_chart_.multiselect('Select Variables for the Model:',selected_feat,default=selected_feat.to_list())
+
+
+#training the model on selected features and then 
+model_rfc = RandomForestClassifier()
+model_rfc.fit(X_train[selected_vars],y_train)
+y_pred_rfc = model_rfc.predict(X_test[selected_vars])
+
+
+#visualisation of accracy
+cm = confusion_matrix(y_test, y_pred_rfc)
+# Create the heatmap plot using Plotly Express
+con_mat = px.imshow(cm, labels=dict(x="Predicted", y="True"), x=['Not Followed', 'Followed'], y=['Not Followed', 'Followed'], color_continuous_scale='Blues',text_auto=True,title='Confusion Matrix Random Forest Classifier Customer Churn')
+# Update the color axis to hide the scale
+con_mat.update_coloraxes(showscale=False)
+#creating a container for model_accuracy
+model_social_sharing_class_.plotly_chart(con_mat,use_container_width=True)
+model_social_sharing_class_.divider()
+model_social_sharing_class_.text(classification_report(y_test,y_pred_rfc))
+
+# Get feature importances
+importances = model_rfc.feature_importances_
+
+# Get feature names
+feature_names = X_test[selected_vars].columns.tolist()
+# Create a horizontal bar chart for feature importance
+fig = go.Figure(go.Bar(
+    x=feature_names,
+    y=importances,
+))
+
+# Customize layout
+fig.update_layout(
+    title='Feature Importance in Random Forest Classifier Social Sharing',
+    xaxis_title='Feature Names',
+    yaxis_title='Importance',
+)
+
+model_social_sharing_chart_.plotly_chart(fig,use_container_width=True)
 
 
 
