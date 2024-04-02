@@ -535,7 +535,7 @@ X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Comp
                                                                  'Number_of_Audiobooks_Completed','Number_of_Audiobooks_Completed'],axis=1)[selected_feat])
 X, y = smt.fit_resample(X_Scaled,req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0))
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
-model_rfc.fit(X_Scaled,y_train)
+model_rfc.fit(X_train,y_train)
 y_pred_rfc = model_rfc.predict(X_test)
 
 #visualisation of accracy
