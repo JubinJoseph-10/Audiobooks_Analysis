@@ -667,7 +667,6 @@ model_recomm_follow_chart_ = model_recomm_follow_chart.container(border=True)
 #from sklearn.ensemble import RandomForestClassfier
 smt = SMOTE()
 #Xrroin yrroin ± smr.irresompLe(Xrroin yrrin)
-X_train,X_test,y_train,y_test = train_test_split(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1),req_data['Recommendations_Followed'],test_size=0.25)
 @st.cache_resource
 def sel_feat_returner():
     X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
@@ -676,7 +675,7 @@ def sel_feat_returner():
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat = X_train.columns[(sel.get_support())]
+    selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[(sel.get_support())]
     return selected_feat,X_train,X_test,y_train,y_test
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
