@@ -45,7 +45,7 @@ demo_listening_habs_des_.write('\n')
 demo_Var_ = demo_listening_habs_des_.selectbox('Select a Demographic Variable to Study!',['Age_Group','City','Gender','Commuting_Mode'],key=2)
 eval_Var_ = demo_listening_habs_des_.selectbox('Select a Variable to Study Habbits!',['No_of_Books_read_in_a_year_Number','Event_Duration_Minutes_2_Weeks','Event_Duration_Minutes_5_Weeks',
                                                 'Product_Running_Time','Completion_Rate_5_Weeks','Membership_Duration','Number_of_Audiobooks_Completed','Number_of_Audiobooks_Purchased','Time_Spent_Browsing','Genre_Exploration',
-                                                'Engagement_Rate'])
+                                                'Engagement_Rate','Listening_Speed_Numeric'])
 demo_listening_habs_des_.write('\n')
 
 #creating the datset that would be displayed
