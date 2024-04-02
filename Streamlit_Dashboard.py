@@ -520,7 +520,7 @@ def sel_feat_returner():
     sel = SelectFromModel(RandomForestClassifier())
     sel.fit(X_train, y_train)
     sel.get_support()
-    selected_feat = X_train.columns[(sel.get_support())]
+    selected_feat = X_train.columns.tolist()[(sel.get_support())]
     return selected_feat,X_train,X_test,y_train,y_test
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
