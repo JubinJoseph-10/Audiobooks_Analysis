@@ -77,8 +77,7 @@ further_top_author = further.container(border=True)
 further_top_author_1 , further_top_author_2 = further_top_author.columns([.7,.3])
 further_top_author_1_ = further_top_author_1.container(border=True)
 further_top_author_2_ = further_top_author_2.container(border=True)
-basis_top_author = further_top_author_2_.select_box('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews',
-                                                                                             'Average Ratings','Social Sharing'],key =49)
+basis_top_author = further_top_author_2_.selectbox('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews','Average Ratings','Social Sharing'],key =49)
 
 data_top_authors = basis_data_sorter('Product_Author',basis_top_audiobooks)
 top_author_chart = px.bar(data_top_authors,x='Product_Author',barmode='group',color='Product_Author',
