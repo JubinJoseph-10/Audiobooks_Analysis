@@ -850,7 +850,7 @@ def sel_feat_returner():
 
 selected_feat,X_train,X_test,y_train,y_test = sel_feat_returner()
 
-selected_vars = model_social_sharing_chart_.multiselect('Select Variables for the Model:',selected_feat,default=selected_feat.to_list())
+selected_vars = model_social_sharing_chart_.multiselect('Select Variables for the Model:',selected_feat,default=selected_feat.to_list(),key=99999)
 
 
 #training the model on selected features and then 
