@@ -432,7 +432,9 @@ top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">
 top_g_analysis_pref.write('\n')
 top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">4. An interesting note shows that <i><b>middle adults (36-40) not only show a comparatively high preference for ‘parenting and relationship’ genre in tandem with a tendency for the highest listening speed (over 1.5 times) and the highest completion rate for ‘teen and young adult’ genres. Similarly, while the number of users for the lifestyle genre stems low, it is preferred quite high among both the genders.</i><b></div>',unsafe_allow_html=True)
 top_g_analysis_pref.write('\n')
-top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">5. Content acquisition strategies tailored for different age groups and genders can be genre specific. For instance, parenting and young adult self-development genre for users in the middle adulthood age bracket or lifestyle genre books represent potential for both genders.</div>',unsafe_allow_html=True)
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">5. <i><b>Content acquisition strategies tailored for different age groups and genders should be genre specific. Alongside must ensure that the popular books are part of the catalouge for example Top 100 from books from NY Times for a genre.</i><b></div>',unsafe_allow_html=True)
+top_g_analysis_pref.write('\n')
+top_g_analysis_pref.markdown('<div style="text-align: justify; font-size: 14px">6. <i><b>Audible sgould prioritize and incentivize popular authors who have multiple genres, to promote genre exploration among users.</i><b></div>',unsafe_allow_html=True)
 top_g_analysis_pref.write('\n')
 
 
