@@ -78,7 +78,7 @@ further_top_author = further.container(border=True)
 further_top_author_1 , further_top_author_2 = further_top_author.columns([.3,.7])
 
 basis_top_author = further_top_author_1.select_box('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews',
-                                                                                             'Average Ratings','Social Sharing'])
+                                                                                             'Average Ratings','Social Sharing'],key =77)
 
 
 further_top_narrators = further.container(border=True)
