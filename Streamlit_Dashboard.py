@@ -16,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 
 ico = Image.open("Data/Audible.png")
 #Setting page configs
-st.set_page_config(layout='wide',title='Audiobook Analysis',initial_sidebar_state='collapsed',page_icon=ico)
+st.set_page_config(layout='wide',page_title='Audiobook Analysis',initial_sidebar_state='collapsed',page_icon=ico)
 
 #Setting the title
 st.title('Audiobooks User Analyis')
