@@ -38,6 +38,63 @@ demograph = further_2.selectbox('Select a Demographic Variable!',['Age_Group','G
 demograph_specifc = further_3.selectbox(f'Select a {demograph}!',req_data[demograph].unique(),key=71)
 
 
+top_data_city = req_data[req_data['City']==state_name]
+top_data_city_req = top_data_city[top_data_city[demograph]==demograph_specifc]
+
+
+###definition for data returner
+def basis_data_sorter(nature,base):
+  if base == 'Number of Listeners':
+    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Ref ID'].count().sort_values(ascending=False).head(5)).reset_index().rename(columns={'Ref ID':'Number of Users'})
+    return apt_data
+  elif base == 'Number of Reviews':
+    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Reviews_Written'].sum().sort_values(ascending=False).head(5)).reset_index().rename(columns={'Reviews_Written':'Number of Reviews'})
+    return apt_data
+  elif base == 'Best Ratings':
+    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Ratings_Given'].mean().round(2).sort_values(ascending=False).head(5)).reset_index().rename(columns={'Reviews_Written':'Number of Reviews'})
+    return apt_data
+  elif base == 'Most Shared':
+    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Social_Sharing'].sum().sort_values(ascending=False).head(5)).reset_index().rename(columns={'Social_Sharing':'Times Shared'})
+    return apt_data
+
+
+###Top audiobooks section
+further_top_audiobooks = further.container(border=True)
+further_top_audiobooks_1 , further_top_audiobooks_2 = further_top_audiobooks.columns([.3,.7])
+basis_top_audiobooks = further_top_author_1.select_box('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews',
+                                                                                             'Best Ratings','Most Shared'])
+
+data_top_audiobooks = basis_data_sorter('Product_Name',basis_top_audiobooks)
+
+top_audio_chart = px.bar(data_top_audiobooks,x='Product_Name',barmode='group',color='Product_Name',
+                        y=data_top_audiobooks.columns[1],title=f'Top Audiobooks based on {data_top_audiobooks.columns[1]}')
+top_audio_chart.update_layout(showlegend=False)
+top_audio_chart.update_xaxes(tickmode='array', tickvals=[])
+#
+further_top_audiobooks_2.plotly_chart(top_audio_chart,use_column_width=True)
+
+
+###
+further_top_author = further.container(border=True)
+further_top_author_1 , further_top_author_2 = further_top_author.columns([.3,.7])
+
+basis_top_author = further_top_author_1.select_box('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews',
+                                                                                             'Average Ratings','Social Sharing'])
+
+
+further_top_narrators = further.container(border=True)
+
+
+
+
+further_top_genre = further.container(border=True)
+
+
+
+further_top_publishers =  further.container(border=True)
+
+
+
 
 image_loc = 'Data/{}.png'.format(state_name)
 state_image = Image.open(image_loc)
