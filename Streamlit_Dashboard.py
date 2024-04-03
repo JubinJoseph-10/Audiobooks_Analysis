@@ -61,7 +61,7 @@ def basis_data_sorter(nature,base):
 ###Top audiobooks section
 
 graphs_1 = top_section.container(border=True)
-further_top_audiobooks,further_top_narrators = graphs.columns([.5,.5])
+further_top_audiobooks,further_top_narrators = graphs_1.columns([.5,.5])
 graphs_2 = top_section.container(border=True)
 
 further_top_audiobooks_ = further_top_audiobooks.container(border=True)
