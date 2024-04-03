@@ -61,10 +61,10 @@ def basis_data_sorter(nature,base):
 ###Top audiobooks section
 further_top_audiobooks = further_.container(border=True)
 further_top_audiobooks_1 , further_top_audiobooks_2 = further_top_audiobooks.columns([.3,.7])
+further_top_audiobooks_1_ = further_top_audiobooks_1.container(border=True)
+further_top_audiobooks_2_ = further_top_audiobooks_2_.container(border=True)
 basis_top_audiobooks = further_top_audiobooks_1.selectbox('Select a Basis for Choosing Top Authors',['Number of Listeners','Number of Reviews','Best Ratings','Most Shared'],key=89)
-
 data_top_audiobooks = basis_data_sorter('Product_Name',basis_top_audiobooks)
-
 top_audio_chart = px.bar(data_top_audiobooks,x='Product_Name',barmode='group',color='Product_Name',
                         y=data_top_audiobooks.columns[1],title=f'Top Audiobooks based on {data_top_audiobooks.columns[1]}',height=400,width=500)
 top_audio_chart.update_layout(showlegend=False)
