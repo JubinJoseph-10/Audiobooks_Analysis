@@ -37,7 +37,6 @@ state_name = further_1.selectbox('Select a State!',req_data['City'].unique(),key
 demograph = further_2.selectbox('Select a Demographic Variable!',['Age_Group','Gender','Commuting_Mode'],key=70)
 demograph_specifc = further_3.selectbox(f'Select a {demograph}!',req_data[demograph].unique(),key=71)
 
-
 top_data_city = req_data[req_data['City']==state_name]
 top_data_city_req = top_data_city[top_data_city[demograph]==demograph_specifc]
 
@@ -109,6 +108,8 @@ top_pub_chart.update_xaxes(showticklabels=False, title='')
 further_top_publishers_.plotly_chart(top_pub_chart,use_column_width=True)
 
 
+top_book = data_top_audiobooks.iloc[0]
+further_.markdown('<div style="text-align: center; font-size: 24px">The most read book in {} with {} as {} based on {} is {}</div>'.format(state_name,demograph,demograph_specifc,basis_top_audiobooks,top_book),unsafe_allow_html=True) 
 
 
 
