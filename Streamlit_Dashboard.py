@@ -117,11 +117,11 @@ top_genre = data_top_genre.iloc[0,0]
 top_pub = data_top_pub.iloc[0,0]
 further_.markdown('<div style="text-align: justify; font-size: 14px">1. The most heard book in {} with {} as {} based on {} is <b>{}<b>.</div>'.format(state_name,demograph,demograph_specifc,basis_top_audiobooks,top_book),unsafe_allow_html=True) 
 further_.write('\n')
-further_.markdown('<div style="text-align: justify; font-size: 14px">2. The most most heard Narrator in {} with {} as {} based on {} is **{}**.</div>'.format(state_name,demograph,demograph_specifc,basis_top_author,top_narrator),unsafe_allow_html=True) 
+further_.markdown('<div style="text-align: justify; font-size: 14px">2. The most most heard Narrator in {} with {} as {} based on {} is <b>{}<b>.</div>'.format(state_name,demograph,demograph_specifc,basis_top_author,top_narrator),unsafe_allow_html=True) 
 further_.write('\n')
-further_.markdown('<div style="text-align: justify; font-size: 14px">3. The most heard genre in {} with {} as {} based on {} is **{}**.</div>'.format(state_name,demograph,demograph_specifc,basis_top_genre,top_genre),unsafe_allow_html=True) 
+further_.markdown('<div style="text-align: justify; font-size: 14px">3. The most heard genre in {} with {} as {} based on {} is <b>{}<b>.</div>'.format(state_name,demograph,demograph_specifc,basis_top_genre,top_genre),unsafe_allow_html=True) 
 further_.write('\n')
-further_.markdown('<div style="text-align: justify; font-size: 14px">4. The most prominent publisher in {} with {} as {} based on {} is **{}**.</div>'.format(state_name,demograph,demograph_specifc,basis_top_pub,top_pub),unsafe_allow_html=True) 
+further_.markdown('<div style="text-align: justify; font-size: 14px">4. The most prominent publisher in {} with {} as {} based on {} is <b>{}<b>.</div>'.format(state_name,demograph,demograph_specifc,basis_top_pub,top_pub),unsafe_allow_html=True) 
 further_.write('\n')
 
 
