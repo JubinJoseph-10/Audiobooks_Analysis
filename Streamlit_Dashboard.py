@@ -110,7 +110,7 @@ further_top_publishers_.plotly_chart(top_pub_chart,use_column_width=True)
 
 #######################################################################################
 #######################################################################################
-further_.divide()
+further_.divider()
 top_book = data_top_audiobooks.iloc[0,0]
 top_narrator = data_top_authors.iloc[0,0]
 top_genre = data_top_genre.iloc[0,0]
