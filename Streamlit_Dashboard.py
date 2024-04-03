@@ -66,7 +66,7 @@ basis_top_audiobooks = further_top_audiobooks_1.selectbox('Select a Basis for Ch
 data_top_audiobooks = basis_data_sorter('Product_Name',basis_top_audiobooks)
 
 top_audio_chart = px.bar(data_top_audiobooks,x='Product_Name',barmode='group',color='Product_Name',
-                        y=data_top_audiobooks.columns[1],title=f'Top Audiobooks based on {data_top_audiobooks.columns[1]}',height=200,width=300)
+                        y=data_top_audiobooks.columns[1],title=f'Top Audiobooks based on {data_top_audiobooks.columns[1]}',height=400,width=500)
 top_audio_chart.update_layout(showlegend=False)
 top_audio_chart.update_xaxes(tickmode='array', tickvals=[])
 further_top_audiobooks_2.plotly_chart(top_audio_chart,use_column_width=True)
