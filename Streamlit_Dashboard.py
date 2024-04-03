@@ -89,7 +89,7 @@ further_top_narrators_.plotly_chart(top_author_chart,use_column_width=True)
 further_top_genre_ = further_top_genre.container(border=True)
 basis_top_genre = further_top_genre_.selectbox('Select a Basis for Choosing Top Genres',['Number of Listeners','Number of Reviews','Average Ratings','Social Sharing'],key= 999)
 data_top_genre = basis_data_sorter('Genre',basis_top_genre)
-further_top_genre_.DataFrame(data_top_genre) 
+further_top_genre_.dataframe(data_top_genre) 
 top_genre_chart = px.bar(data_top_genre,x='Genre',barmode='group',color='Genre',
                         y=data_top_genre.columns[1],title=f'Top Audiobooks based on {data_top_genre.columns[1]}',height=400,width=450)
 further_top_genre_.plotly_chart(top_genre_chart,use_column_width=True)
