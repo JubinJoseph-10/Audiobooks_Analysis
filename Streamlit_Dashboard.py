@@ -108,9 +108,21 @@ top_pub_chart.update_xaxes(showticklabels=False, title='')
 further_top_publishers_.plotly_chart(top_pub_chart,use_column_width=True)
 
 
-top_book = data_top_audiobooks.iloc[0,0]
-further_.markdown('<div style="text-align: center; font-size: 24px">The most read book in {} with {} as {} based on {} is {}</div>'.format(state_name,demograph,demograph_specifc,basis_top_audiobooks,top_book),unsafe_allow_html=True) 
+#######################################################################################
+#######################################################################################
 
+top_book = data_top_audiobooks.iloc[0,0]
+top_narrator = data_top_authors.iloc[0,0]
+top_genre = data_top_genre.iloc[0,0]
+top_pub = data_top_pub.iloc[0,0]
+further_.markdown('<div style="text-align: justify; font-size: 14px">1. The most heard book in {} with {} as {} based on {} is {}.</div>'.format(state_name,demograph,demograph_specifc,basis_top_audiobooks,top_narrator),unsafe_allow_html=True) 
+further_.write('/n')
+further_.markdown('<div style="text-align: justify; font-size: 14px">1. The most most heard Narrator in {} with {} as {} based on {} is {}.</div>'.format(state_name,demograph,demograph_specifc,basis_top_author,top_book),unsafe_allow_html=True) 
+further_.write('/n')
+further_.markdown('<div style="text-align: justify; font-size: 14px">1. The most heard genre in {} with {} as {} based on {} is {}.</div>'.format(state_name,demograph,demograph_specifc,basis_top_genre,top_genre),unsafe_allow_html=True) 
+further_.write('/n')
+further_.markdown('<div style="text-align: justify; font-size: 14px">1. The most prominent publisher in {} with {} as {} based on {} is {}.</div>'.format(state_name,demograph,demograph_specifc,basis_top_pub,top_pub),unsafe_allow_html=True) 
+further_.write('/n')
 
 
 
