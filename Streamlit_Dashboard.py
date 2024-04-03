@@ -27,7 +27,7 @@ req_data = pd.read_csv("Data/Audible_Dashboard_Data.csv")
 ######################################################################################################################################################################################################################################################################################################################################################### Habbits Across Users 
 top_section = st.container(border=True)
 state_photo,further = top_section.columns([.27,.73])
-state_photo_ = state_photo.cotainer(border=True) 
+state_photo_ = state_photo.container(border=True) 
 further_ = further.container(border=True) 
 
 #select boxes for the variables that would be a part of the chart
