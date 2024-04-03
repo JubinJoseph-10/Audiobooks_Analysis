@@ -51,7 +51,7 @@ def basis_data_sorter(nature,base):
     apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Reviews_Written'].sum().sort_values(ascending=False).head(5)).reset_index().rename(columns={'Reviews_Written':'Number of Reviews'})
     return apt_data
   elif base == 'Best Ratings':
-    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Ratings_Given'].mean().round(2).sort_values(ascending=False).head(5)).reset_index().rename(columns={'Reviews_Written':'Number of Reviews'})
+    apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Ratings_Given'].mean().round(2).sort_values(ascending=False).head(5)).reset_index().rename(columns={'Ratings_Given':'Number of Reviews'})
     return apt_data
   elif base == 'Most Shared':
     apt_data = pd.DataFrame(top_data_city_req.groupby([nature])['Social_Sharing'].sum().sort_values(ascending=False).head(5)).reset_index().rename(columns={'Social_Sharing':'Times Shared'})
