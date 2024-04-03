@@ -37,7 +37,7 @@ state_name = further.selectbox('Select a State to Study!',req_data['City'].uniqu
 
 
 image_loc = 'Data/{}.png'.format(state_name)
-state_image = Image.open()
+state_image = Image.open(image_loc)
 state_photo_.image(image_loc,use_column_width=True)
 
 
