@@ -108,7 +108,7 @@ top_pub_chart.update_xaxes(showticklabels=False, title='')
 further_top_publishers_.plotly_chart(top_pub_chart,use_column_width=True)
 
 
-top_book = data_top_audiobooks.iloc[0]
+top_book = data_top_audiobooks.iloc[0,0]
 further_.markdown('<div style="text-align: center; font-size: 24px">The most read book in {} with {} as {} based on {} is {}</div>'.format(state_name,demograph,demograph_specifc,basis_top_audiobooks,top_book),unsafe_allow_html=True) 
 
 
