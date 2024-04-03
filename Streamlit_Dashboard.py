@@ -551,7 +551,7 @@ test['Recommendations_Followed'] = req_data['Recommendations_Followed']
 test['Membership_Duration'] = req_data['Membership_Duration']
 
 #plotting the correlation heatmap
-heatmap_popu = px.imshow(test.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect='auto',text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for all the Audioboon Popularity based on Social Sharing, Reviews and Ratings',height=500)
+heatmap_popu = px.imshow(test.corr(method='spearman').round(3),labels=dict(x="Features", y="Features", color="Correlation"),aspect='auto',text_auto=True,color_continuous_scale ='jet',title='Correlation Heatmap for Audiobook Popularity based on Social Sharing, Reviews and Ratings',height=500)
 popularity_scores_.plotly_chart(heatmap_popu,use_container_width=True)
 
 
