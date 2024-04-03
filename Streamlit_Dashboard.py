@@ -42,6 +42,10 @@ top_data_city = req_data[req_data['City']==state_name]
 top_data_city_req = top_data_city[top_data_city[demograph]==demograph_specifc]
 
 
+image_loc = 'Data/{}.png'.format(state_name)
+state_image = Image.open(image_loc)
+state_photo_.image(image_loc,use_column_width=True)
+
 ###definition for data returner
 def basis_data_sorter(nature,base):
   if base == 'Number of Listeners':
@@ -79,7 +83,7 @@ further_top_audiobooks_.plotly_chart(top_audio_chart,use_column_width=True)
 
 ###further_top_narrators_
 further_top_narrators_ = further_top_narrators.container(border=True)
-basis_top_author = further_top_narrators_.selectbox('Select a Basis for Choosing Top Narrators',['Number of Listeners','Number of Reviews','Average Ratings','Social Sharing'],key =49)
+basis_top_author = further_top_narrators_.selectbox('Select a Basis for Choosing Top Narrators',['Number of Listeners','Number of Reviews','Best Ratings','Most Shared'],key =49)
 data_top_authors = basis_data_sorter('Product_Narrator',basis_top_author)
 top_author_chart = px.bar(data_top_authors,x='Product_Narrator',barmode='group',color='Product_Narrator',
                         y=data_top_authors.columns[1],title=f'Top Audiobooks based on {data_top_authors.columns[1]}',height=300,width=450)
@@ -87,9 +91,8 @@ further_top_narrators_.plotly_chart(top_author_chart,use_column_width=True)
 
 ###further_top_genre_
 further_top_genre_ = further_top_genre.container(border=True)
-basis_top_genre = further_top_genre_.selectbox('Select a Basis for Choosing Top Genres',['Number of Listeners','Number of Reviews','Average Ratings','Social Sharing'],key= 999)
+basis_top_genre = further_top_genre_.selectbox('Select a Basis for Choosing Top Genres',['Number of Listeners','Number of Reviews','Best Ratings','Most Shared'],key= 999)
 data_top_genre = basis_data_sorter('Genre',basis_top_genre)
-further_top_genre_.dataframe(data_top_genre) 
 top_genre_chart = px.bar(data_top_genre,x='Genre',barmode='group',color='Genre',
                         y=data_top_genre.columns[1],title=f'Top Audiobooks based on {data_top_genre.columns[1]}',height=400,width=450)
 further_top_genre_.plotly_chart(top_genre_chart,use_column_width=True)
@@ -97,18 +100,18 @@ further_top_genre_.plotly_chart(top_genre_chart,use_column_width=True)
 
 
 further_top_publishers_ =  further_top_publishers.container(border=True)
-basis_top_pub = further_top_publishers_.selectbox('Select a Basis for Choosing Top Publishers',['Number of Listeners','Number of Reviews','Average Ratings','Social Sharing'],key =99)
+basis_top_pub = further_top_publishers_.selectbox('Select a Basis for Choosing Top Publishers',['Number of Listeners','Number of Reviews','Best Ratings','Most Shared'],key =99)
 data_top_pub = basis_data_sorter('Publisher_Name',basis_top_pub)
 top_pub_chart = px.bar(data_top_pub,x='Publisher_Name',barmode='group',color='Publisher_Name',
                         y=data_top_pub.columns[1],title=f'Top Audiobooks based on {data_top_pub.columns[1]}',height=400,width=450)
+top_pub_chart.update_layout(showlegend=False)
+top_pub_chart.update_xaxes(showticklabels=False, title='')
 further_top_publishers_.plotly_chart(top_pub_chart,use_column_width=True)
 
 
 
 
-image_loc = 'Data/{}.png'.format(state_name)
-state_image = Image.open(image_loc)
-state_photo_.image(image_loc,use_column_width=True)
+
 
 
 #########################################################################################################################################################################################################################################################################################################################################################
