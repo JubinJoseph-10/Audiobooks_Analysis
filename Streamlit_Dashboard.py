@@ -28,11 +28,14 @@ req_data = pd.read_csv("Data/Audible_Dashboard_Data.csv")
 top_section = st.container(border=True)
 state_photo,further = top_section.columns([.27,.73])
 state_photo_ = state_photo.container(border=True) 
-further_ = further.container(border=True) 
+further_ = further.container(border=True)
+further_1,further_2,further_3 = further_.columns([.33,.33,.33])
+
 
 #select boxes for the variables that would be a part of the chart
-state_name = further.selectbox('Select a State to Study!',req_data['City'].unique(),key=69)
-
+state_name = further_1.selectbox('Select a State!',req_data['City'].unique(),key=69)
+demograph = further_2.selectbox('Select a Demographic Variable!',['Age_Group','Gender','Commuting_Mode'],key=70)
+demograph_specifc = further_3.selectbox(f'Select a {demograph}!',req_data[demograph].unique(),key=71)
 
 
 
