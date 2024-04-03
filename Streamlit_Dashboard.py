@@ -31,7 +31,7 @@ state_photo_ = state_photo.container(border=True)
 further_ = further.container(border=True) 
 
 #select boxes for the variables that would be a part of the chart
-state_name = demo_listening_habs_des_.selectbox('Select a State to Study!',req_data['City'].unique(),key=2)
+state_name = demo_listening_habs_des_.selectbox('Select a State to Study!',req_data['City'].unique(),key=69)
 
 
 
