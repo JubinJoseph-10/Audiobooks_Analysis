@@ -622,7 +622,7 @@ def sel_feat_returner():
     X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
     X, y = smt.fit_resample(X_Scaled,req_data['Completion_Rate_5_Weeks'].apply(lambda x: 1 if x>=100 else 0))
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
-    sel = SelectFromModel(RandomForestClassifier())
+    sel = SelectFromModel(RandomForestClassifier(),threshold=0.1)
     sel.fit(X_train, y_train)
     sel.get_support()
     selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[sel.get_support()]
@@ -704,7 +704,7 @@ def sel_feat_returner():
     X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
     X, y = smt.fit_resample(X_Scaled,req_data['Ratings_Given'].apply(lambda x:rating_sorter(x)))
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
-    sel = SelectFromModel(RandomForestClassifier())
+    sel = SelectFromModel(RandomForestClassifier(),threshold=0.1)
     sel.fit(X_train, y_train)
     sel.get_support()
     selected_feat =  model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[sel.get_support()]
@@ -773,7 +773,7 @@ def sel_feat_returner():
     X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
     X, y = smt.fit_resample(X_Scaled,req_data['Recommendations_Followed'])
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)
-    sel = SelectFromModel(RandomForestClassifier())
+    sel = SelectFromModel(RandomForestClassifier(),threshold=0.1)
     sel.fit(X_train, y_train)
     sel.get_support()
     selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[(sel.get_support())]
@@ -843,7 +843,7 @@ def sel_feat_returner():
     X_Scaled = scaler.fit_transform(model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1))
     X, y = smt.fit_resample(X_Scaled,req_data['Social_Sharing'])
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25)  
-    sel = SelectFromModel(RandomForestClassifier())
+    sel = SelectFromModel(RandomForestClassifier(),threshold=0.1)
     sel.fit(X_train, y_train)
     sel.get_support()
     selected_feat = model_data.drop(['Completion_Rate_2_Weeks','Completion_Rate_5_Weeks','Social_Sharing','Ratings_Given','Recommendations_Followed'],axis=1).columns[(sel.get_support())]
